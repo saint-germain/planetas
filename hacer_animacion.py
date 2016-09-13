@@ -23,7 +23,7 @@ for j in np.arange(myrange):
         for k in range(ncols):
             data[i,k]=rawdata[ii,k]
         ii=ii+1
-    plt.scatter(data[:,2],data[:,4],s=3e-7*data[:,5],c=data[:,5]/eradcm,cmap='cubehelix',vmin=0,vmax=radmax/eradcm)   
+    plt.scatter(data[:,2],data[:,4],s=50*data[:,5],c=data[:,5]/eradcm,cmap='cubehelix',vmin=0,vmax=radmax/eradcm)   
     plt.colorbar(label='Planet radius (R_Earth)');
     plt.xlabel('Semi-major axis (AU)')
     plt.ylabel('Planet mass (M_Earth)')
@@ -34,7 +34,7 @@ for j in np.arange(myrange):
     plt.close() 
 for i in range(15):    
     figure_list = figure_list+ ' {} '.format(figure_name)      
-command = 'convert -delay 10 -loop 0 {} animation.gif'.format(figure_list)
+command = 'convert -delay 10 -loop 0 {}'.format(figure_list)+' animation_{}.gif'.format(filename[:-4])
 os.system(command)
 command = 'rm *.png'
 os.system(command)
